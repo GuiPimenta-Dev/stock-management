@@ -18,7 +18,7 @@ class PolygonAPI:
         # 	"message": "Attempted to request today's data before end of day. Please upgrade your plan at https://polygon.io/pricing"
         # }
         # So I decided to retrieve yesterday's data instead.
-        
+
         yesterday = datetime.date.today() - datetime.timedelta(days=1)
         yesterday = yesterday.strftime("%Y-%m-%d")
         url = f"https://api.polygon.io/v1/open-close/{symbol}/{yesterday}"
