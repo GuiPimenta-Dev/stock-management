@@ -49,34 +49,38 @@ def test_if_stock_is_returned_correctly():
         "performance": {"5 Day": "1,42%"},
     }
 
+
 @pytest.fixture
 def proxy_gateway():
     real_gateway = StubStocksGateway()
     return InMemoryStocksProxy(real_gateway)
 
+
 def test_fetch_new_data(proxy_gateway):
     symbol = "AAPL"
-    
+
     data = proxy_gateway.get_stock(symbol)
-    
+
     assert proxy_gateway.cache[symbol][0] == data
     assert proxy_gateway.cache[symbol][1] != None
 
+
 def test_return_cached_data(proxy_gateway):
     symbol = "AAPL"
-    proxy_gateway.get_stock(symbol) 
-    cached_timestamp = proxy_gateway.cache[symbol][1] 
-    
-    proxy_gateway.get_stock(symbol)  
-    
+    proxy_gateway.get_stock(symbol)
+    cached_timestamp = proxy_gateway.cache[symbol][1]
+
+    proxy_gateway.get_stock(symbol)
+
     assert cached_timestamp == proxy_gateway.cache[symbol][1]
+
 
 def test_cache_expiration(proxy_gateway):
     symbol = "AAPL"
-    proxy_gateway.get_stock(symbol)  
+    proxy_gateway.get_stock(symbol)
     expired_cache = (proxy_gateway.cache[symbol][0], datetime.now() - timedelta(minutes=6))
     proxy_gateway.cache[symbol] = expired_cache
-    
-    proxy_gateway.get_stock(symbol) 
-    
+
+    proxy_gateway.get_stock(symbol)
+
     assert expired_cache != proxy_gateway.cache[symbol]
