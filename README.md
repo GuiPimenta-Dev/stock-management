@@ -16,8 +16,8 @@ This project provides a simple Stock Management API using FastAPI. The API allow
 ## Docker
 
   ```sh
-    docker build -t cial .
-    docker run -p 8000:8000 cial
+    docker build -t stocks .
+    docker run -p 8000:8000 stocks
   ```
 
 ## Usage
