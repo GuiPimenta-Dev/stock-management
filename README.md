@@ -6,7 +6,6 @@ This project provides a simple Stock Management API using FastAPI. The API allow
 ## Table of Contents
 
 - [Docker](#docker)
-- [Usage](#usage)
 - [API Endpoints](#api-endpoints)
   - [GET /stocks/{symbol}](#get-stocks)
   - [POST /stocks/{symbol}](#post-stocks)
@@ -19,15 +18,6 @@ This project provides a simple Stock Management API using FastAPI. The API allow
     docker build -t stocks .
     docker run -p 8000:8000 stocks
   ```
-
-## Usage
-
-1. Run the FastAPI server:
-    ```sh
-    uvicorn src.main:app --reload
-    ```
-
-2. Open your browser and navigate to `http://127.0.0.1:8000/docs` to view the interactive API documentation.
 
 ## API Endpoints
 
