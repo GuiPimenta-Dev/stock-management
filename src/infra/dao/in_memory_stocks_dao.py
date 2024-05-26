@@ -5,6 +5,7 @@ from src.application import StocksDAO
 # This class simulates a database, but it can be easily extended to use a real database such as SQLite, MySQL, or PostgreSQL.
 # To switch to a real database, simply implement the methods defined in the StocksRepository interface.
 
+
 class InMemoryStocksDAO(StocksDAO):
     def __init__(self):
         self.stocks = {}
